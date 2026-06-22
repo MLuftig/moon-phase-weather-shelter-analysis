@@ -59,17 +59,9 @@ pip install -r requirements.txt
 ```
 
 ### Usage
-Execute the pipeline sequentially through the source directory:
-```bash
-# Step 1: Extract and filter historical shelter and weather logs
-python src/data_extraction.py
+Execute the workflow step-by-step by opening the Jupyter Notebooks inside the source directory:
 
-# Step 2: Perform relational SQL joining and feature binning
-python src/data_engineering.py
+1. **Step 1: Ingestion & Filtering** — Open and run `src/moonphase-and-weather-data-extraction.ipynb` to process raw historical metrics.
+2. **Step 2: SQL Merging & Binning** — Open and run `src/moonphase-and-weather-data-engineering.ipynb` to build your relational analytical tables.
+3. **Step 3: Statistical Hypothesis Testing** — Open and run `src/moonphase-and-weather-data-analysis.ipynb` to evaluate distributions and execute Kruskal-Wallis tests.
 
-# Step 3: Run normality evaluations and non-parametric statistical tests
-python src/statistical_analysis.py
-```
-
-## License & Contact
-Distributed under the MIT License. For questions or professional collaboration regarding veterinary informatics, reach out via [LinkedIn](Your-LinkedIn-URL).
