@@ -23,13 +23,13 @@ This project bridges 15 years of veterinary clinical intuition with data analyti
 ### Project Directory Structure
 ```text
 ├── data/               # Raw and filtered shelter and weather CSVs
-├── notebooks/          # Exploratory data analysis and scatterplot drafting
-├── src/                # Modular pipeline execution scripts
-│   ├── data_extraction.py
-│   ├── data_engineering.py
-│   └── statistical_analysis.py
+├── src/                # Modular pipeline execution notebooks
+│   ├── moonphase-and-weather-data-extraction.ipynb
+│   ├── moonphase-and-weather-data-engineering.ipynb
+│   └── moonphase-and-weather-data-analysis.ipynb
 ├── requirements.txt    # Managed package dependencies
 └── README.md
+
 ```
 
 ## Technical Decision Rationale
