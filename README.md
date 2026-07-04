@@ -21,7 +21,7 @@ This project bridges 15 years of veterinary clinical intuition with data analyti
 3. **Post-Hoc Pairwise Testing:** Conducted Pairwise Wilcoxon Rank Sum tests with adjusted p-values to isolate specific environmental thresholds driving significant volume variances.
 
 ### Project Directory Structure
-```text
+```
 ├── data/               # Raw and filtered shelter and weather CSVs
 ├── images/             # Generated analytical visualizations
 │   └── shelter_intakes_by_pressure.png
@@ -31,3 +31,27 @@ This project bridges 15 years of veterinary clinical intuition with data analyti
 │   └── moonphase-and-weather-data-analysis.ipynb
 ├── requirements.txt    # Managed package dependencies
 └── README.md
+```
+
+### Feature Selection and Dimension Reduction
+Initial Ordinary Least Squares (OLS) regression mapping revealed identical, highly correlated slopes between overall intake volume and patient mortality. Furthermore, solar energy, solar radiation, and absolute temperature presented extreme multicollinearity. To prevent model redundancy, the workflow dropped the mortality vector to focus purely on intake surges, selecting "Feels-Like Temperature" as the single representative metric for heat-related stress.
+
+### Non-Parametric Framework Selection
+Because both the intake and transformation datasets failed the fundamental assumptions of normal distribution normality (p < 0.05), classical ANOVA testing was rejected. Implementing the Kruskal-Wallis test ensured mathematically robust conclusions that do not rely on a symmetric bell-curve distribution.
+
+## Key Findings & Operational Insights
+* **The Lunar Myth:** Median intake volume and mortality rates showed no statistically significant variance across moon phases, successfully rejecting the hypothesis of a full-moon behavior surge.
+* **Barometric Pressure Surges:** Sea-level barometric pressure drops (1000–1020mb vs 1020–1030mb) yielded an incredibly strong statistical significance (p = 2.58e-23), proving that arriving weather fronts actively trigger influxes of stray or surrendered animals.
+* **Inclement Weather Dynamics:** Significant spikes occurred during heavy rainfall events (p = 0.037) and low-visibility conditions (p = 0.011). This highlights a clear "human variable" where the public proactively brings vulnerable animals to safety during adverse weather.
+
+![Shelter Intakes by Barometric Pressure](images/shelter_intakes_by_pressure.png)
+
+## Getting Started & Installation
+
+### Prerequisites
+Establish a local virtual environment and install the verified data science stack:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+pip install -r requirements.txt
+```
