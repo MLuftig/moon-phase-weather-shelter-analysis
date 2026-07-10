@@ -46,6 +46,17 @@ Because both the intake and transformation datasets failed the fundamental assum
 
 ![Shelter Intakes by Barometric Pressure](images/shelter_intakes_by_pressure.png)
 
+## Future Roadmap & Operational Extensions
+
+To further refine the predictive accuracy of the intake models and Monte Carlo simulations, the next phase of development will focus on the following core data integrations and engineering enhancements:
+
+* **Holiday and Seasonal Trend Feature Engineering (with Post-Holiday Lag):**
+    * *Rationale:* Integrate federal and major cultural holidays (e.g., 4th of July, New Year's Eve) to account for predictable stray spikes caused by fireworks and community displacement. This feature will include a 48-hour post-holiday "lag window" to capture delayed processing and intake surges that occur right after a holiday weekend.
+* **Intake Type Segmentation:**
+    * *Rationale:* Segment the primary intake vector into distinct categories (e.g., Strays vs. Owner Surrenders vs. Adoption Returns). Environmental factors like barometric pressure and severe weather heavily impact stray pickups, whereas owner surrenders are typically driven by non-weather variables like socioeconomic shifts or end-of-month lease cycles.
+* **Autoregressive and Baseline Moving Averages:**
+    * *Rationale:* Incorporate autoregressive modeling components ($t-1$, $t-7$) or a rolling 7-day population moving average. Because shelter overflow risk is deeply cumulative, establishing yesterday's baseline volume is critical for accurately predicting tomorrow's capacity threshold break.
+
 ## Getting Started & Installation
 
 ### Prerequisites
