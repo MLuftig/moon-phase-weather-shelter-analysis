@@ -26,6 +26,7 @@ This project bridges 15 years of veterinary clinical intuition with data analyti
 ```
 ├── data/               # Raw and filtered shelter and weather CSVs
 ├── images/             # Generated analytical visualizations
+│   ├── weather_significance_summary.png
 │   ├── weather_v_intake_boxplots.png
 │   └── weather_v_mortality_boxplots.png
 ├── src/                # Modular pipeline execution notebooks
