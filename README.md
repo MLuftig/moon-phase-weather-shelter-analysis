@@ -26,7 +26,7 @@ This project bridges 15 years of veterinary clinical intuition with data analyti
 ```
 ├── data/               # Raw and filtered shelter and weather CSVs
 ├── images/             # Generated analytical visualizations
-│   ├── shelter_intakes_by_pressure.png
+│   ├── weather_v_intake_boxplots.png
 │   └── weather_v_mortality_boxplots.png
 ├── src/                # Modular pipeline execution notebooks
 │   ├── moonphase-and-weather-data-extraction.ipynb
@@ -46,7 +46,7 @@ Because both the intake and mortality datasets failed the fundamental assumption
 * **Humidity is the one variable where mortality shows comparable, or even slightly stronger, significance than intake** (mortality: p = 0.0065–0.0113 across two comparisons; intake: p = 0.0022 across one comparison).
 * **Wind speed shows no significant relationship with either intake or mortality.**
 
-![Shelter Intakes by Barometric Pressure](images/shelter_intakes_by_pressure.png)
+![Shelter Intakes by Weather Condition](images/weather_v_intake_boxplots.png)
 ![Shelter Mortality by Weather Condition](images/weather_v_mortality_boxplots.png)
 
 ## Future Roadmap & Operational Extensions
