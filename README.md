@@ -46,6 +46,7 @@ Because both the intake and mortality datasets failed the fundamental assumption
 * **Humidity is the one variable where mortality shows comparable, or even slightly stronger, significance than intake** (mortality: p = 0.0065–0.0113 across two comparisons; intake: p = 0.0022 across one comparison).
 * **Wind speed shows no significant relationship with either intake or mortality.**
 
+![Statistical Significance of Weather Effects on Intake vs. Mortality](images/weather_significance_summary.png)
 ![Shelter Intakes by Weather Condition](images/weather_v_intake_boxplots.png)
 ![Shelter Mortality by Weather Condition](images/weather_v_mortality_boxplots.png)
 
