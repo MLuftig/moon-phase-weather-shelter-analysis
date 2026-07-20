@@ -23,3 +23,51 @@ This project bridges 15 years of veterinary clinical intuition with data analyti
 3. **Post-Hoc Pairwise Testing:** Conducted Pairwise Wilcoxon Rank Sum tests with Bonferroni-adjusted p-values to isolate specific environmental thresholds driving significant volume and mortality variances.
 
 ### Project Directory Structure
+```
+├── data/               # Raw and filtered shelter and weather CSVs
+├── images/             # Generated analytical visualizations
+│   ├── shelter_intakes_by_pressure.png
+│   └── shelter_mortality_by_weather.png
+├── src/                # Modular pipeline execution notebooks
+│   ├── moonphase-and-weather-data-extraction.ipynb
+│   ├── moonphase-and-weather-data-engineering.ipynb
+│   └── moonphase-and-weather-data-analysis.ipynb
+├── requirements.txt    # Managed package dependencies
+└── README.md
+```
+
+### Non-Parametric Framework Selection
+Because both the intake and mortality datasets failed the fundamental assumptions of normal distribution (p < 0.05), classical ANOVA testing was rejected. Implementing the Kruskal-Wallis test and Bonferroni-adjusted pairwise Wilcoxon comparisons ensured mathematically robust conclusions that do not rely on a symmetric bell-curve distribution, and that account for the multiple-comparisons problem introduced by testing several weather-bin pairs per variable.
+
+## Key Findings & Operational Insights
+* **The Lunar Myth:** Median intake volume and mortality rates showed no statistically significant variance across moon phases, successfully rejecting the hypothesis of a full-moon behavior surge.
+* **Barometric pressure and temperature drive both intake and mortality, but far more strongly for intake.** Sea-level pressure drops (1000–1020mb vs 1020–1030mb) show an extremely strong relationship with intake volume (p = 2.59e-23) and a real, but far weaker, relationship with mortality (p = 7.79e-06). The same pattern holds for cold "feels-like" temperature (intake p = 1.70e-45 at its strongest comparison; mortality p = 4.16e-09).
+* **Rainfall and low visibility drive intake volume specifically, with no significant effect on mortality** (rainfall: p = 0.038 for intake, not significant for mortality; visibility: p = 0.011–0.013 for intake, not significant for mortality). This is consistent with a "human variable" mechanism — the public proactively bringing vulnerable animals to safety during visible or wet adverse weather, independent of the animals' own health status.
+* **Humidity is the one variable where mortality shows comparable, or even slightly stronger, significance than intake** (mortality: p = 0.0065–0.0113 across two comparisons; intake: p = 0.0022 across one comparison).
+* **Wind speed shows no significant relationship with either intake or mortality.**
+
+![Shelter Intakes by Barometric Pressure](images/shelter_intakes_by_pressure.png)
+![Shelter Mortality by Weather Condition](images/shelter_mortality_by_weather.png)
+
+## Future Roadmap & Operational Extensions
+
+To further refine the predictive accuracy of the intake models and Monte Carlo simulations, the next phase of development will focus on the following core data integrations and engineering enhancements:
+
+* **Holiday and Seasonal Trend Feature Engineering (with Post-Holiday Lag):**
+    * *Rationale:* Integrate federal and major cultural holidays (e.g., 4th of July, New Year's Eve) to account for predictable stray spikes caused by fireworks and community displacement. This feature will include a 48-hour post-holiday "lag window" to capture delayed processing and intake surges that occur right after a holiday weekend.
+* **Intake Type Segmentation:**
+    * *Rationale:* Segment the primary intake vector into distinct categories (e.g., Strays vs. Owner Surrenders vs. Adoption Returns). Environmental factors like barometric pressure and severe weather heavily impact stray pickups, whereas owner surrenders are typically driven by non-weather variables like socioeconomic shifts or end-of-month lease cycles.
+* **Autoregressive and Baseline Moving Averages:**
+    * *Rationale:* Incorporate autoregressive modeling components ($t-1$, $t-7$) or a rolling 7-day population moving average. Because shelter overflow risk is deeply cumulative, establishing yesterday's baseline volume is critical for accurately predicting tomorrow's capacity threshold break.
+* **Mortality Causal Investigation:**
+    * *Rationale:* Now that mortality is confirmed as a statistically distinct outcome from intake volume, investigate the specific clinical/operational mechanism behind the pressure and temperature relationships — e.g., whether cold-weather mortality reflects exposure-related intake severity versus a distinct in-shelter effect.
+
+## Getting Started & Installation
+
+### Prerequisites
+Establish a local virtual environment and install the verified data science stack:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+pip install -r requirements.txt
+```
