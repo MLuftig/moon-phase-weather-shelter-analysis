@@ -27,7 +27,7 @@ This project bridges 15 years of veterinary clinical intuition with data analyti
 ├── data/               # Raw and filtered shelter and weather CSVs
 ├── images/             # Generated analytical visualizations
 │   ├── shelter_intakes_by_pressure.png
-│   └── shelter_mortality_by_weather.png
+│   └── weather_v_mortality_boxplots.png
 ├── src/                # Modular pipeline execution notebooks
 │   ├── moonphase-and-weather-data-extraction.ipynb
 │   ├── moonphase-and-weather-data-engineering.ipynb
@@ -47,7 +47,7 @@ Because both the intake and mortality datasets failed the fundamental assumption
 * **Wind speed shows no significant relationship with either intake or mortality.**
 
 ![Shelter Intakes by Barometric Pressure](images/shelter_intakes_by_pressure.png)
-![Shelter Mortality by Weather Condition](images/shelter_mortality_by_weather.png)
+![Shelter Mortality by Weather Condition](images/weather_v_mortality_boxplots.png)
 
 ## Future Roadmap & Operational Extensions
 
